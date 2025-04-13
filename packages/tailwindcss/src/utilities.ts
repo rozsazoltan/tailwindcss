@@ -4990,7 +4990,7 @@ export function createUtilities(theme: Theme) {
       let value = theme.resolveWith(
         candidate.value.value,
         ['--text'],
-        ['--line-height', '--letter-spacing', '--font-weight'],
+        ['--line-height', '--letter-spacing', '--font-weight', '--text-transform'],
       )
       if (value) {
         let [fontSize, options = {}] = Array.isArray(value) ? value : [value]
@@ -5041,6 +5041,12 @@ export function createUtilities(theme: Theme) {
             'font-weight',
             options['--font-weight']
               ? `var(--tw-font-weight, ${options['--font-weight']})`
+              : undefined,
+          ),
+          decl(
+            'text-transform',
+            options['--text-transform']
+              ? `var(--tw-text-transform, ${options['--text-transform']})`
               : undefined,
           ),
         ]
